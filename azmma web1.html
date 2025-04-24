@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZMMA - India's FIRST Protein Tea Powder</title>
+    <style>
+        :root {
+            --primary-color: #0a5c36; /* Deep Forest Green */
+            --secondary-color: #4ead76; /* Fresh Leaf Green */
+            --accent-bg-color: #e8f5e9; /* Mint Cream */
+            --gold-accent: #d4af37; /* Luxury Gold */
+            --text-color: #333333; /* Charcoal Black */
+            --dark-bg: #054026; /* Dark green background */
+            --light-text: #fff;
+            --gold-gradient: linear-gradient(135deg, #f6e6a2, #d4af37, #b8860b);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--light-text);
+            line-height: 1.6;
+            background-color: var(--dark-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold-gradient);
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            background-color: rgba(10, 92, 54, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--gold-accent);
+        }
+        
+        .nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav li {
+            margin: 0 1rem;
+        }
+        
+        .nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+        
+        .intro {
+            background-color: rgba(10, 92, 54, 0.8);
+            padding: 3rem 0;
+            border-bottom: 4px solid var(--gold-accent);
+        }
+        
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            color: var(--light-text);
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 25%;
+            right: 25%;
+            bottom: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            border-radius: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.5rem 0;
+            color: var(--gold-accent);
+        }
+        
+        .hashtags {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--gold-accent);
+            margin-bottom: 2rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            background-color: rgba(5, 64, 38, 0.7);
+            padding: 4rem 0;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-box {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid var(--gold-accent);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            color: #333333;
+        }
+        
+        /* Products Section */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .product-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+            border-color: var(--gold-accent);
+        }
+        
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--gold-accent);
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold-accent);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .product-description {
+            font-size: 1.1rem;
+            margin: 0.8rem 0;
+            color: #555555;
+        }
+        
+        .product-price {
+            margin: 1.2rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .mrp {
+            text-decoration: line-through;
+            color: #aaa;
+            margin-right: 10px;
+        }
+        
+        .offer-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .savings {
+            display: block;
+            font-size: 0.9rem;
+            color: #d4534c;
+            margin-top: 5px;
+        }
+        
+        .contact {
+            background: rgba(5, 64, 38, 0.8);
+            border-top: 4px solid var(--gold-accent);
+            border-bottom: 4px solid var(--gold-accent);
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info p {
+            margin: 0.8rem 0;
+        }
+        
+        .note {
+            margin: 2rem auto;
+            font-style: italic;
+            background-color: rgba(212, 175, 55, 0.1);
+            padding: 1.2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            text-align: center;
+            border-left: 4px solid var(--gold-accent);
+        }
+        
+        /* Reviews Section Styling */
+        .reviews-section {
+            background-color: rgba(10, 92, 54, 0.6);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .review-card {
+            background-color: rgba(5, 64, 38, 0.85);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-left: 4px solid var(--gold-accent);
+            position: relative;
+        }
+        
+        .review-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--gold-accent);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-family: Georgia, serif;
+        }
+        
+        .review-content {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            color: var(--light-text);
+        }
+        
+        .reviewer {
+            font-weight: 600;
+            color: var(--gold-accent);
+            margin-bottom: 0.2rem;
+        }
+        
+        .reviewer-title {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold-gradient);
+        }
+        
+        /* Button styling */
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--gold-accent);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: var(--dark-bg);
+        }
+        
+        /* Additional luxury elements */
+        .divider {
+            height: 2px;
+            background: var(--gold-gradient);
+            width: 80px;
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+        
+        /* Benefit Icons Styling */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-box {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-accent);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-description {
+            color: #555555;
+        }
+        
+        /* Key points styling */
+        .key-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: rgba(5, 64, 38, 0.6);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--gold-accent);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .key-point {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold-accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .key-point:hover {
+            transform: translateX(5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .key-point-icon {
+            font-size: 1.8rem;
+            color: var(--gold-accent);
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .key-point-text {
+            font-size: 1.1rem;
+            color: var(--light-text);
+        }
+        
+        /* Custom order styling */
+        .custom-order {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 2px solid var(--gold-accent);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .custom-order h3 {
+            color: var(--gold-accent);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .price-display {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        /* Top seller badge */
+        .top-seller {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--gold-gradient);
+            color: #000;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transform: rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">AZMMA</div>
+        </div>
+    </header>
+    
+    <nav class="nav">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="intro">
+        <div class="container">
+            <div class="intro-content">
+                <h1>Want to stay fit, healthy, and feel your best every day? 💪</h1>
+                <p>Say hello to India's FIRST Protein Tea Powder – your new daily health booster!</p>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <div class="key-point-icon">🌟</div>
+                        <div class="key-point-text">Premium Quality Tea Powder for Health Enthusiasts</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">🌿</div>
+                        <div class="key-point-text">Made with Specially Selected Organic Ingredients</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">💪</div>
+                        <div class="key-point-text">Enhanced with High-Quality Protein for Fitness</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">⚡</div>
+                        <div class="key-point-text">Perfect Daily Boost for Your Wellness Journey</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">🇮🇳</div>
+                        <div class="key-point-text">Proudly Made in Nellore, India</div>
+                    </div>
+                </div>
+                
+                <p class="tagline">It's not just tea. It's your fitness partner! 💚</p>
+                
+                <p class="hashtags">#AZMMA #ProteinTeaPowder #Organic #HealthyLiving #FitnessGoals</p>
+                
+                <a href="#products" class="btn">Explore Products</a>
+            </div>
+        </div>
+    </div>
+    
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About AZMMA</h2>
+            <div class="divider"></div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-box">
+                        <p>AZMMA is revolutionizing the way Indians think about tea. As the creator of India's first protein tea powder, we've combined the country's love for tea with the nutritional benefits of high-quality protein.</p>
+                        
+                        <p>Our journey began with a simple idea: create a beverage that's not only delicious but also contributes to your daily health and fitness goals. After years of research and development, we're proud to offer a product that delivers on taste, nutrition, and convenience.</p>
+                        
+                        <p>Made from 100% organic ingredients and manufactured in Nellore, India, AZMMA Protein Tea Powder is carefully crafted to support your wellness journey. Whether you're looking to manage your weight, improve digestion, or simply incorporate more protein into your diet, our tea powder is the perfect solution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Benefits</h2>
+            <div class="divider"></div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-box">
+                    <div class="benefit-icon">💪</div>
+                    <div class="benefit-title">High Protein</div>
+                    <div class="benefit-description">Each serving provides essential protein to support muscle maintenance and recovery, perfect for active individuals.</div>
+                </div>
+                
+                <div class="benefit-box">
+                    <div class="benefit-icon">☕</div>
+                    <div class="benefit-title">Caffeine-Free</div>
+                    <div class="benefit-description">Enjoy all the benefits without the caffeine jitters, making it suitable for any time of day.</div>
+                </div>
+                
+                <div class="benefit-box">
+                    <div class="benefit-icon">🌿</div>
+                    <div class="benefit-title">Supports Digestion</div>
+                    <div class="benefit-description">Our special blend helps improve digestive health and provides natural bloating relief.</div>
+                </div>
+                
+                <div class="benefit-box">
+                    <div class="benefit-icon">⚖️</div>
+                    <div class="benefit-title">Weight Management</div>
+                    <div class="benefit-description">Supports your weight loss journey by providing nutrition without excessive calories.</div>
+                </div>
+                
+                <div class="benefit-box">
+                    <div class="benefit-icon">🌱</div>
+                    <div class="benefit-title">100% Organic</div>
+                    <div class="benefit-description">Made from carefully sourced organic ingredients for the purest, most natural tea experience.</div>
+                </div>
+                
+                <div class="benefit-box">
+                    <div class="benefit-icon">🕒</div>
+                    <div class="benefit-title">Convenient</div>
+                    <div class="benefit-description">Quick to prepare, easy to enjoy - perfect for busy lifestyles while maintaining nutritional goals.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Premium Products</h2>
+            <div class="divider"></div>
+            
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-title">Mini Pack</div>
+                    <div class="product-description">5 tea bags</div>
+                    <div class="product-price">
+                        <span class="mrp">MRP ₹89</span>
+                        <span class="offer-price">Price ₹79rs</span>
+                        <span class="savings"> Off ₹10</span>
+                    </div>
+                    <a href="https://wa.me/918341639089?text=Hi,%20I%20would%20like%20to%20order%20the%20Mini%20Pack%20(5%20tea%20bags)%20for%20₹79." class="btn" target="_blank">Order Now</a>
+                </div>
+                
+                <div class="product-card" style="position: relative;">
+                    <div class="top-seller">Best Value!</div>
+                    <div class="product-title">Fit Pack</div>
+                    <div class="product-description">10 tea bags</div>
+                    <div class="product-price">
+                        <span class="mrp">MRP ₹179</span>
+                        <span class="offer-price">Price ₹155rs</span>
+                        <span class="savings">Off ₹24</span>
+                    </div>
+                    <a href="https://wa.me/918341639089?text=Hi,%20I%20would%20like%20to%20order%20the%20Fit%20Pack%20(10%20tea%20bags)%20for%20₹155." class="btn" target="_blank">Order Now</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-title">Monthly Box</div>
+                    <div class="product-description">30 tea bags</div>
+                    <div class="product-price">
+                        <span class="mrp">MRP ₹350</span>
+                        <span class="offer-price">Price ₹318rs</span>
+                        <span class="savings">Off ₹32 </span>
+                    </div>
+                    <a href="https://wa.me/918341639089?text=Hi,%20I%20would%20like%20to%20order%20the%20Monthly%20Box%20(30%20tea%20bags)%20for%20₹319." class="btn" target="_blank">Order Now</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-title">Power Pack</div>
+                    <div class="product-description">50 tea bags</div>
+                    <div class="product-price">
+                        <span class="mrp">MRP ₹450</span>
+                        <span class="offer-price">Price ₹340rs</span>
+                        <span class="savings">Off ₹110</span>
+                    </div>
+                    <a href="https://wa.me/918341639089?text=Hi,%20I%20would%20like%20to%20order%20the%20Power%20Pack%20(50%20tea%20bags)%20for%20₹340." class="btn" target="_blank">Order Now</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-title">Wellness Pack</div>
+                    <div class="product-description">75 tea bags</div>
+                    <div class="product-price">
+                        <span class="mrp">MRP ₹699</span>
+                        <span class="offer-price">Price ₹569rs</span>
+                        <span class="savings">Off ₹130 </span>
+                    </div>
+                    <a href="https://wa.me/918341639089?text=Hi,%20I%20would%20like%20to%20order%20the%20Wellness%20Stack%20(75%20tea%20bags)%20for%20₹569." class="btn" target="_blank">Order Now</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-title">Ultimate Box</div>
+                    <div class="product-description">100 tea bags</div>
+                    <div class="product-price">
+                        <span class="mrp">MRP ₹998</span>
+                        <span class="offer-price"> price ₹848rs</span>
+                        <span class="savings">Off ₹150 </span>
+                    </div>
+                    <a href="https://wa.me/918341639089?text=Hi,%20I%20would%20like%20to%20order%20the%20Ultimate%20Box%20(100%20tea%20bags)%20for%20₹848." class="btn" target="_blank">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="custom-order">
+                <h3>Customize Your Order</h3>
+                <div class="order-form">
+                    <div class="form-group">
+                        <label for="bag-quantity">How many tea bags would you like?</label>
+                        <input type="number" id="bag-quantity" min="0" max="200" value="0">
+                    </div>
+                    <div class="price-display">
+                        Estimated Price: ₹<span id="price-display">0</span>
+                    </div>
+                    <a href="#" id="custom-order-btn" class="btn">Order Now</a>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p>Currently available – Classic Tea. More flavors coming soon!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="divider"></div>
+            
+            <div class="reviews">
+                <div class="review-card">
+                    <div class="review-content">
+                        As a nutrition specialist, I'm extremely impressed with AZMMA's protein tea powder. It offers a perfect balance of nutrition and taste, making it an excellent addition to any diet plan. The digestive benefits are exceptional.
+                    </div>
+                    <div class="reviewer">Dr. Vikram</div>
+                    <div class="reviewer-title">MD, Nutritional Medicine</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        I appreciate that AZMMA uses 100% organic ingredients. As an environmental scientist, I'm always looking for sustainable products that don't harm our planet. This tea powder checks all the boxes while delivering excellent health benefits.
+                    </div>
+                    <div class="reviewer">Anjali</div>
+                    <div class="reviewer-title">Environmental Scientist</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        Working long hours in tech, I needed something healthy to keep me going. AZMMA's protein tea has become my daily companion - it gives me steady energy without the caffeine crash and helps me stay focused all day.
+                    </div>
+                    <div class="reviewer">Rahul K.</div>
+                    <div class="reviewer-title">IT Professional</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        I recommend AZMMA to all my clients who want to complement their fitness regimen with proper nutrition. The protein content is impressive, and it genuinely helps with recovery and muscle maintenance. A must-have for fitness enthusiasts!
+                    </div>
+                    <div class="reviewer">Upendra</div>
+                    <div class="reviewer-title">Fitness Trainer</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-content">
+                        I'm proud to support local innovations like AZMMA that contribute to both public health and our economy. This protein tea powder represents the kind of health-conscious products our community needs. Truly impressive quality.
+                    </div>
+                    <div class="reviewer">MLA Mandipalli RamPrasad Reddy</div>
+                    <div class="reviewer-title">Member of Legislative Assembly</div>
+                </div>
+<div class="review-card">
+                    <div class="review-content">
+                        Since incorporating AZMMA into my daily routine, I've noticed significant improvements in my digestion and energy levels. The bloating relief is real! It's refreshing to find a product that actually delivers on its promises. 
+                </div> 
+                    <div class="reviewer">Vimala.S</div>
+                        <div class="reviewer-title">Yoga Instructor</div>
+                </div>
+
+                    
+    </section>
+    
+    
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="divider"></div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><strong>Email:</strong> azmmateapowder@gmail.com</p>
+                <p><strong>Phone:</strong> +91 83416 39089</p>
+                <p><strong>Manufactured in:</strong> Nellore, India</p>
+            </div>
+            <a href="mailto:azmmateapowder@gmail.com" class="btn">Send Us a Message</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 AZMMA. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Custom order functionality
+    const quantityInput = document.getElementById('bag-quantity');
+    const priceDisplay = document.getElementById('price-display');
+    const customOrderBtn = document.getElementById('custom-order-btn');
+
+    // Base price per tea bag
+    const basePricePerBag = 10;
+
+    // Update price based on quantity
+    quantityInput.addEventListener('input', updatePrice);
+
+    function updatePrice() {
+        const quantity = parseInt(quantityInput.value);
+        let pricePerBag = basePricePerBag;
+
+        // Apply bulk discounts
+        if (quantity >= 50) {
+            pricePerBag = 8;
+        } else if (quantity >= 30) {
+            pricePerBag = 9;
+        } else if (quantity >= 10) {
+            pricePerBag = 9.5;
+        }
+
+        const totalPrice = quantity * pricePerBag;
+        priceDisplay.textContent = totalPrice;
+
+        // Update custom order button WhatsApp link
+        customOrderBtn.href = `https://wa.me/918341639089?text=Hi,%20I%20would%20like%20to%20order%20${quantity}%20custom%20tea%20bags%20for%20₹${totalPrice}.`;
+    }
+
+    // Initialize with default price
+    updatePrice();
+</script>
+</body>
+</html>
